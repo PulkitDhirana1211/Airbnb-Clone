@@ -92,12 +92,12 @@ struct DestinationSearchView: View {
                         .fontWeight(.semibold)
                     
                     VStack(alignment: .leading) {
-                        DatePicker("From", selection: $startDate, displayedComponents: .date)
+                        DatePicker("From", selection: $startDate, in: Date()..., displayedComponents: .date)
                             .onTapGesture(count: 99, perform: {
                                         // overrides tap gesture to fix ios 17.1 bug
                                     })
                         Divider()
-                        DatePicker("To", selection: $endDate, displayedComponents: .date)
+                        DatePicker("To", selection: $endDate, in: startDate..., displayedComponents: .date)
                             .onTapGesture(count: 99, perform: {
                                         // overrides tap gesture to fix ios 17.1 bug
                                     })
@@ -174,15 +174,18 @@ extension DestinationSearchView {
             Button {
                 guard numGuests > 0 else { return }
                 numGuests -= 1
+                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
             } label: {
                 CustomStepperButton(imageName: "minus")
             }
             .disabled(numGuests == 0 ? true : false)
             
             Text("\(numGuests)")
+                .frame(width: 30)
 
             Button {
                 numGuests += 1
+                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
             } label: {
                 CustomStepperButton(imageName: "plus")
             }
