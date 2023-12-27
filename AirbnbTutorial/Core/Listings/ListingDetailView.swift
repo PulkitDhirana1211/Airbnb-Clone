@@ -27,7 +27,8 @@ struct ListingDetailView: View {
                                 .fill(Color.white)
                                 .frame(width: 32, height: 32)
                         }
-                        .padding(32)
+                        .padding(.vertical, 52)
+                        .padding(.horizontal, 32)
                 }
 
             }
