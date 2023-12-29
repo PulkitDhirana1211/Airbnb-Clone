@@ -1,5 +1,5 @@
 //
-//  SearchAndFilterView.swift
+//  SearchAndFilterBar.swift
 //  AirbnbTutorial
 //
 //  Created by Pulkit Dhirana on 19/12/23.
@@ -7,17 +7,19 @@
 
 import SwiftUI
 
-struct SearchAndFilterView: View {
+struct SearchAndFilterBar: View {
+    @Binding var location: String
+    
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
             
             VStack(alignment: .leading, spacing: 2) {
-                Text("Where to?")
-                    .font(.footnote)
+                Text(location.isEmpty ? "Where to?" : location)
+                    .font(.footnote) 
                     .fontWeight(.semibold)
                 
-                Text("Anywhere - Any Week - Add guests")
+                Text("\(location.isEmpty ? "Anywhere -" : "") Any Week - Add guests")
                     .font(.caption2)
                     .foregroundStyle(.gray)
             }
@@ -42,5 +44,5 @@ struct SearchAndFilterView: View {
 }
 
 #Preview {
-    SearchAndFilterView()
+    SearchAndFilterBar(location: .constant("Los Angeles"))
 }
