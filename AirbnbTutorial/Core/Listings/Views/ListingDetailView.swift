@@ -11,6 +11,7 @@ import MapKit
 
 struct ListingDetailView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     let listing: Listing
     
@@ -212,6 +213,8 @@ struct ListingDetailView: View {
                             .fontWeight(.semibold)
                             .underline()
                     }
+                    .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
+                    
                     
                     Spacer()
                     
@@ -230,7 +233,7 @@ struct ListingDetailView: View {
                 }
                 .padding(.horizontal, 32)
             }
-            .background(Color.white)
+            .background(colorScheme == .dark ? Color.black : Color.white)
             
         }
         

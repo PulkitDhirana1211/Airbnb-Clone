@@ -28,13 +28,12 @@ struct DestinationSearchView: View {
             HStack {
                 Button {
                     withAnimation(.snappy) {
-                            viewModel.updateListingsForLocation()
+                        viewModel.updateListingsForLocation()
                         show.toggle()
                     }
                 } label: {
                     Image(systemName: "xmark.circle")
                         .imageScale(.large)
-                        .foregroundStyle(Color.black)
                 }
                 
                 Spacer()
@@ -44,7 +43,6 @@ struct DestinationSearchView: View {
                         viewModel.searchLocation = ""
                         viewModel.updateListingsForLocation()
                     }
-                    .foregroundStyle(.black)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 }
@@ -55,27 +53,29 @@ struct DestinationSearchView: View {
                 
                 if selectedOption == .location {
                     
-                        Text("Where to?")
-                            .font(.title2)
-                            .fontWeight(.semibold)
+                    Text("Where to?")
+                        .foregroundStyle(Color("customTextColor"))
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .imageScale(.small)
+                            .foregroundStyle(Color("customTextColor"))
                         
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .imageScale(.small)
-                            
-                            TextField("Search Destinations", text: $viewModel.searchLocation)
-                                .font(.subheadline)
-                                .onSubmit {
-                                    viewModel.updateListingsForLocation()
-                                    show.toggle()
-                                }
-                        }
-                        .frame(height: 44)
-                        .padding(.horizontal)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(lineWidth: 1)
-                                .foregroundStyle(Color(.systemGray4))
+                        TextField("Search Destinations", text: $viewModel.searchLocation)
+                            .font(.subheadline)
+                            .onSubmit {
+                                viewModel.updateListingsForLocation()
+                                show.toggle()
+                            }
+                    }
+                    .frame(height: 44)
+                    .padding(.horizontal)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 1)
+                            .foregroundStyle(Color(.systemGray4))
                     }
                 } else {
                     CollapsedPickerView(title: "Where", description: "Add destination")
@@ -100,13 +100,13 @@ struct DestinationSearchView: View {
                     VStack(alignment: .leading) {
                         DatePicker("From", selection: $startDate, in: Date()..., displayedComponents: .date)
                             .onTapGesture(count: 99, perform: {
-                                        // overrides tap gesture to fix ios 17.1 bug
-                                    })
+                                // overrides tap gesture to fix ios 17.1 bug
+                            })
                         Divider()
                         DatePicker("To", selection: $endDate, in: startDate..., displayedComponents: .date)
                             .onTapGesture(count: 99, perform: {
-                                        // overrides tap gesture to fix ios 17.1 bug
-                                    })
+                                // overrides tap gesture to fix ios 17.1 bug
+                            })
                         Divider()
                     }
                     .foregroundStyle(.gray)
@@ -124,7 +124,7 @@ struct DestinationSearchView: View {
                     selectedOption = .dates
                 }
             }
-                
+            
             
             // num guests view
             VStack(alignment: .leading) {
@@ -142,14 +142,14 @@ struct DestinationSearchView: View {
                         
                     }
                     
-//                    Stepper {
-//                        Text("\(numGuests) Adults")
-//                    } onIncrement: {
-//                        numGuests += 1
-//                    } onDecrement: {
-//                        guard numGuests > 0 else { return }
-//                            numGuests -= 1
-//                    }
+                    //                    Stepper {
+                    //                        Text("\(numGuests) Adults")
+                    //                    } onIncrement: {
+                    //                        numGuests += 1
+                    //                    } onDecrement: {
+                    //                        guard numGuests > 0 else { return }
+                    //                            numGuests -= 1
+                    //                    }
                     
                 } else {
                     CollapsedPickerView(title: "Who", description: "Add guests")
@@ -176,7 +176,7 @@ extension DestinationSearchView {
     
     private var stepperView: some View {
         HStack {
-                                        
+            
             Button {
                 guard numGuests > 0 else { return }
                 numGuests -= 1
@@ -188,7 +188,7 @@ extension DestinationSearchView {
             
             Text("\(numGuests)")
                 .frame(width: 30)
-
+            
             Button {
                 numGuests += 1
                 UIImpactFeedbackGenerator(style: .soft).impactOccurred()
