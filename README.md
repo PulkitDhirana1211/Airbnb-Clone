@@ -10,5 +10,4 @@ A basic Airbnb clone app
 ![IMG_0964](https://github.com/PulkitDhirana1211/Airbnb-Clone/assets/54793200/1f1814f5-5348-492a-abc1-dd9608cccf9a)
 ![IMG_0963](https://github.com/PulkitDhirana1211/Airbnb-Clone/assets/54793200/5d75f44f-1b50-4214-8373-bfe072d99291)
 ![IMG_0962](https://github.com/PulkitDhirana1211/Airbnb-Clone/assets/54793200/e4e23fea-3e82-49fb-b17a-5bb5ea140738)
-![IMG_0953](https://github.com/PulkitDhirana1211/Airbnb-Clone/assets/54793200/3259aed5-75a4-472c-974f-eb1a0f7eafbf)
-
+![IMG_0965](https://github.com/PulkitDhirana1211/Airbnb-Clone/assets/54793200/479739d9-7a88-46c8-b8a1-04497d8c4f9a)
