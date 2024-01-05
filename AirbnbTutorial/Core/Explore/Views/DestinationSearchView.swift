@@ -14,6 +14,7 @@ enum DestinationSearchOptions {
 }
 
 struct DestinationSearchView: View {
+    @Environment(\.colorScheme) var colorScheme
     
     @Binding var show: Bool
     @ObservedObject var viewModel: ExploreViewModel
@@ -54,7 +55,7 @@ struct DestinationSearchView: View {
                 if selectedOption == .location {
                     
                     Text("Where to?")
-                        .foregroundStyle(Color("customTextColor"))
+                        .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                         .font(.title2)
                         .fontWeight(.semibold)
                     
